@@ -1,22 +1,16 @@
 ---
 title: OC Runtime(4)之Message Forwarding
 date: 2014-03-21
-comments: true
-categories:
-- 技术
-- Objective-C
-tags:
-- OC Runtime
 ---
 
 ### Runtime系列笔记
 
-* [Runtime之对象和类](/2014/03/07/001-OC-Runtime-1-Object&Class/)
-* [Runtime之属性和方法](/2014/03/12/001-OC-Runtime-2-Ivar&Property&Method&Protocol/)
-* [Runtime之关联对象](/2014/03/18/001-OC-Runtime-3-Associated%20Objects/)
-* [Runtime之消息转发](/2014/03/21/001-OC-Runtime-4-Message%20Forwarding/)
-* [Runtime之方法替换](/2014/04/02/001-OC-Runtime-5-Method%20Swizzling/)
-* [Runtime之Load&Initialize](/2014/04/09/001-OC-Runtime-6-Load&Initialize/)
+* [Runtime之对象和类](/2014/03/07/OC-Runtime-1-Object&Class/)
+* [Runtime之属性和方法](/2014/03/12/OC-Runtime-2-Ivar&Property&Method&Protocol/)
+* [Runtime之关联对象](/2014/03/18/OC-Runtime-3-Associated%20Objects/)
+* [Runtime之消息转发](/2014/03/21/OC-Runtime-4-Message%20Forwarding/)
+* [Runtime之方法替换](/2014/04/02/OC-Runtime-5-Method%20Swizzling/)
+* [Runtime之Load&Initialize](/2014/04/09/OC-Runtime-6-Load&Initialize/)
 
 ![OC-Runtime](/images/OC-Runtime.png)
 
