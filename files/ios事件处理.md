@@ -1,0 +1,45 @@
+### iOS事件处理
+
+
+先梳理下用户点击事件的传递及处理流程，如下：
+1、首先，用户触发的点击事件会被添加到事件队列。
+2、UIApplication循环从事件队列中取出事件，并通过-[SendEvent:]分发到UIWindow。
+3、UIWindow先通过hit-test找出第一响应的视图，可以重载这两个函数，-[pointInside:withEvent:],-[hitTest:withEvent:]
+4、UIWindow将Event和Touchs传递给第一响应的视图，如果该视图上存在Gesture，则优先由Gesture处理。
+5、如果该视图没有Gesture或Gesture没有识别成功或没有处理-[touchesBegan:withEvent:]，事件则沿着响应链传递，直到被处理。
+
+When a user-generated event occurs, UIKit creates an event object containing the information needed to process the event. Then it places the event object in the active app’sevent queue. For touch events, that object is a set of touches packaged in a UIEventobject. For motion events, the event object varies depending on which framework you use and what type of motion event you are interested in.
+
+An event travels along a specific path until it is delivered to an object that can handle it. First, the singleton  UIApplication object takes an event from the top of the queue and dispatches it for handling. Typically, it sends the event to the app’s key window object, which passes the event to an initial object for handling. The initial object depends on the type of event.
+
+Touch events. For touch events, the window object first tries to deliver the event to the view where the touch occurred. That view is known as the hit-test view. The process of finding the hit-test view is called hit-testing, which is described in Hit-Testing Returns the View Where a Touch Occurred.
+
+Motion and remote control events. With these events, the window object sends the shaking-motion or remote control event to the first responder for handling. The first responder is described in The Responder Chain Is Made Up of Responder Objects.
+
+
+Motion和remote control事件也是类似流程，不同的是没有hit-test，而是找First responder，由First respinder优先处理。
+
+
+几个关键点：
+1、-[sendEvent:]可以被重载
+2、hit-test流程中的两个关键函数都可以被重载，-[pointInside:withEvent:]，-[hitTest:withEvent:]
+3、Gesture和hit-test视图是同时收到touch事件，在gesture识别成功后，视图上的touch时间才被cancel。
+
+4、touch事件通过-[touchesBegan:withEvent:]，-[touchesMoved:withEvent:]，-[touchesEnded:withEvent:]等方法传递，在-[UIResponder  touchesBegan:withEvent:]中为空实现，-[UIView  touchesBegan:withEvent:]重载后增加传递到下个Responder的逻辑。
+5、如果存在多个Gesture都在识别手势，则可以通过Gesture的属性和委托处理多个Gesture的协同问题。
+
+
+Within an event handling method, you get information about the event by retrieving touch objects from:
+
+The set object. The passed-in NSSet contains all touches that are new or have changed in the phase represented by the method, such as UITouchPhaseBegan for the touchesBegan:withEvent: method.
+
+The event object. The passed-in UIEvent object contains all of the touches for a given multitouch sequence.
+
+The multipleTouchEnabled property is set to NO by default, which means that a view receives only the first touch in a multitouch sequence. When this property is disabled, you can retrieve a touch object by calling the anyObject method on the set object because there is only one object in the set.
+
+
+
+
+
+
+参考文档：Event Handling Guide for iOS
