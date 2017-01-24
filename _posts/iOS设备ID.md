@@ -1,12 +1,6 @@
 ---
 title: iOS设备ID
 date: 2016-04-27
-comments: true
-categories:
-- 技术
-- 移动开发
-tags:
-- iOS
 ---
 
 NSString *identifierForVendor = [[UIDevice currentDevice].identifierForVendor UUIDString]; 

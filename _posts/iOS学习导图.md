@@ -1,12 +1,6 @@
 ---
 title: iOS学习导图
 date: 2016-04-12
-comments: true
-categories:
-- 技术
-- 移动开发
-tags:
-- iOS
 ---
 
 

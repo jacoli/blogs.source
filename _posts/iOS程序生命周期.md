@@ -1,12 +1,6 @@
 ---
 title: iOS程序生命周期
 date: 2016-04-27
-comments: true
-categories:
-- 技术
-- 移动开发
-tags:
-- iOS
 ---
 ### 程序的生命周期
 

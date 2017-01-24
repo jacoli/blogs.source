@@ -1,12 +1,6 @@
 ---
 title: iOS App安装包过大
 date: 2016-04-29
-comments: true
-categories:
-- 技术
-- 移动开发
-tags:
-- iOS
 ---
 
 ![包过大提示](/images/app_package_too_large.png)
